@@ -23,10 +23,8 @@ public class LoginAdapter extends FragmentStatePagerAdapter {
                 return new login_tab_fragment();
             case 1:
                 return new Signup_tab_fragment();
-
-
             default:
-                return new login_tab_fragment();
+                return null;
 
         }
 
@@ -34,7 +32,7 @@ public class LoginAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 2;
     }
 
     @Nullable

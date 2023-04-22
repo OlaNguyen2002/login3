@@ -19,41 +19,13 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Signup_tab_fragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class Signup_tab_fragment extends Fragment {
 
     private EditText email,pass;
     private Button btnSignup;
 
     private FirebaseAuth mAuth;
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-
-
-    public Signup_tab_fragment() {
-        // Required empty public constructor
-    }
-
-
-    // TODO: Rename and change types and number of parameters
-    public static Signup_tab_fragment newInstance() {
-        Signup_tab_fragment fragment = new Signup_tab_fragment();
-
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -78,8 +50,8 @@ public class Signup_tab_fragment extends Fragment {
     }
     public void SignUp(){
         String emailedit,passedit;
-        emailedit=email.getText().toString();
-        passedit=pass.getText().toString();
+        emailedit=email.getText().toString().trim();
+        passedit=pass.getText().toString().trim();
 
         if(TextUtils.isEmpty(emailedit)){
             Toast.makeText(getContext(),"Vui lòng nhập email!",Toast.LENGTH_SHORT).show();
@@ -90,8 +62,8 @@ public class Signup_tab_fragment extends Fragment {
             return;
         }
 
-        if(passedit.length() < 6 || !passedit.matches(".*[A-Z].*") || !passedit.matches(".*[!@#$%^&*()].*")){
-            Toast.makeText(getContext(), "Mật khẩu phải có ít nhất 6 ký tự, bao gồm ít nhất 1 chữ cái viết hoa và 1 ký tự đặc biệt !@#$%^&*()", Toast.LENGTH_SHORT).show();
+        if(passedit.length() < 6 || !passedit.matches(".*[A-Z].*")  ){
+            Toast.makeText(getContext(), "Mật khẩu phải có ít nhất 6 ký tự, bao gồm ít nhất 1 chữ cái viết hoa ", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -99,7 +71,7 @@ public class Signup_tab_fragment extends Fragment {
             Toast.makeText(getContext(), "Vui lòng nhập địa chỉ email hợp lệ!", Toast.LENGTH_SHORT).show();
             return;
         }
-        passedit = passedit.replaceAll(".", "*");
+
         mAuth.createUserWithEmailAndPassword(emailedit,passedit).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
