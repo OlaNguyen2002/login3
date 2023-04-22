@@ -51,7 +51,7 @@
         android:textSize="16sp"
         android:textStyle="bold"
         android:textColor="@color/white"
-        android:backgroundTint="@color/pink"
+        android:backgroundTint="@color/orange"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
